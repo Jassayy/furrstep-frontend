@@ -13,7 +13,9 @@ const Goals = () => {
           const getPets = async () => {
                try {
                     const response = await axios.get(
-                         `${import.meta.env.VITE_BACKEND_URL}/api/v1/pets/get-all-pets`,
+                         `${
+                              import.meta.env.VITE_BACKEND_URL
+                         }/api/v1/pets/get-all-pets`,
                          {
                               withCredentials: true,
                          }
@@ -26,11 +28,21 @@ const Goals = () => {
                               const [goalsResponse, activitiesResponse] =
                                    await Promise.all([
                                         axios.get(
-                                             `${import.meta.env.VITE_BACKEND_URL}/api/v1/goals/all-goals/${pet._id}`,
+                                             `${
+                                                  import.meta.env
+                                                       .VITE_BACKEND_URL
+                                             }/api/v1/goals/all-goals/${
+                                                  pet._id
+                                             }`,
                                              { withCredentials: true }
                                         ),
                                         axios.get(
-                                             `${import.meta.env.VITE_BACKEND_URL}/api/v1/activities/get-all-activities/${pet._id}`,
+                                             `${
+                                                  import.meta.env
+                                                       .VITE_BACKEND_URL
+                                             }/api/v1/activities/get-all-activities/${
+                                                  pet._id
+                                             }`,
                                              { withCredentials: true }
                                         ),
                                    ]);
@@ -72,7 +84,9 @@ const Goals = () => {
                const newStatus =
                     currentStatus === "active" ? "completed" : "active";
                const response = await axios.patch(
-                    `${import.meta.env.VITE_BACKEND_URL}/api/v1/goals/update-status/${goalId}`,
+                    `${
+                         import.meta.env.VITE_BACKEND_URL
+                    }/api/v1/goals/update-status/${goalId}`,
                     { status: newStatus },
                     { withCredentials: true }
                );
@@ -97,7 +111,9 @@ const Goals = () => {
      const handleDeleteGoal = async (goalId, petId) => {
           try {
                await axios.delete(
-                    `${import.meta.env.VITE_BACKEND_URL}/api/v1/goals/delete-goal/${goalId}`,
+                    `${
+                         import.meta.env.VITE_BACKEND_URL
+                    }/api/v1/goals/delete-goal/${goalId}`,
                     { withCredentials: true }
                );
 
@@ -135,8 +151,8 @@ const Goals = () => {
                <div className="absolute bottom-0 left-1/2 w-64 md:w-96 h-64 md:h-96 bg-pink-600 dark:bg-pink-900 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
                <div className="container mx-auto px-4 py-8">
                     <div className="flex justify-center mb-8">
-                         <img 
-                              src="https://media.tenor.com/DZKcXvpu-d8AAAAj/bongo-cat-cute-png.gif" 
+                         <img
+                              src="https://media.tenor.com/DZKcXvpu-d8AAAAj/bongo-cat-cute-png.gif"
                               alt="Bongo Cat"
                               className="w-24 h-24"
                          />
@@ -145,7 +161,7 @@ const Goals = () => {
                          Pet Goals
                     </h1>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  mx-28">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
                          {pets.map((pet) => (
                               <div
                                    key={pet._id}
